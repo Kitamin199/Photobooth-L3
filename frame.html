@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Koleksi Frame Photobooth - Épreuve</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: #f8f6f0;
+      color: #1c1b18;
+      padding: 20px;
+    }
+
+    header {
+      max-width: 1200px;
+      margin: 0 auto 30px auto;
+      border-bottom: 1px solid #e2dbc8;
+      padding-bottom: 15px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 20px;
+      font-weight: 600;
+      letter-spacing: 1px;
+    }
+
+    .sub-title {
+      font-size: 11px;
+      color: #8c857b;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .container {
+      display: flex;
+      gap: 25px;
+      max-width: 1200px;
+      margin: 0 auto;
+      align-items: flex-start;
+    }
+
+    .left-panel {
+      flex: 1;
+      background: #ffffff;
+      border: 1px solid #e2dbc8;
+      border-radius: 12px;
+      padding: 20px;
+      display: none;
+      position: sticky;
+      top: 20px;
+    }
+
+    .left-panel h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 18px;
+      margin-bottom: 4px;
+    }
+
+    .preview-frame-container {
+      background-color: #f1ede4;
+      border: 1px solid #e2dbc8;
+      border-radius: 8px;
+      padding: 15px;
+      margin: 15px 0;
+      text-align: center;
+      transition: background-color 0.3s;
+    }
+
+    .preview-photo-area {
+      background: #ffffff;
+      border: 1px dashed #c5bead;
+      border-radius: 6px;
+      min-height: 240px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .preview-photo-area img, 
+    .preview-photo-area video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: none;
+    }
+
+    .shutter-wrapper {
+      display: none;
+      margin-top: 10px;
+      text-align: center;
+    }
+
+    .shutter-btn {
+      width: 50px;
+      height: 50px;
+      background-color: #e63946;
+      border: 3px solid #ffffff;
+      border-radius: 50%;
+      box-shadow: 0 0 0 2px #e63946, 0 4px 10px rgba(0,0,0,0.15);
+      cursor: pointer;
+      margin: 0 auto;
+      transition: transform 0.15s ease, background-color 0.15s ease;
+      outline: none;
+    }
+
+    .shutter-btn:active {
+      transform: scale(1.2);
+      background-color: #d62828;
+    }
+
+    .right-panel {
+      flex: 2;
+    }
+
+    .grid-frames {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+    }
+
+    .card-frame {
+      background: #ffffff;
+      border: 1px solid #e2dbc8;
+      border-radius: 12px;
+      padding: 15px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .card-frame:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 15px rgba(0,0,0,0.04);
+    }
+
+    .frame-mockup {
+      background: #f1ede4;
+      border-radius: 8px;
+      height: 180px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 12px;
+    }
+
+    .mini-photostrip {
+      background: white;
+      width: 80px;
+      padding: 6px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .mini-photo {
+      background: #d8d2c7;
+      height: 35px;
+      border-radius: 2px;
+    }
+
+    .badge {
+      font-size: 9px;
+      font-weight: 600;
+      text-transform: uppercase;
+      background: #e8e2d5;
+      padding: 3px 8px;
+      border-radius: 4px;
+      width: fit-content;
+      margin-bottom: 6px;
+    }
+
+    .frame-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 15px;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .frame-desc {
+      font-size: 11px;
+      color: #8c857b;
+      line-height: 1.4;
+      margin-bottom: 12px;
+    }
+
+    button {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 8px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      border: none;
+      transition: 0.2s;
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 1px solid #1c1b18;
+      color: #1c1b18;
+    }
+
+    .btn-outline:hover {
+      background: #1c1b18;
+      color: white;
+    }
+
+    .btn-primary {
+      background: #1c1b18;
+      color: white;
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 12px;
+    }
+
+    .btn-primary:hover {
+      background: #333;
+    }
+
+    .btn-action {
+      width: 100%;
+      padding: 10px;
+      margin-top: 8px;
+    }
+
+    .usage-info {
+      font-size: 11px;
+      color: #8c857b;
+      padding-top: 10px;
+      border-top: 1px border #f1ede4;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .usage-info strong {
+      color: #1c1b18;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div>
+      <div class="logo">ÉPREUVE STUDIO</div>
+      <div class="sub-title">Koleksi Frame Editorial & Soft Minimalist</div>
+    </div>
+    <button class="btn-primary" style="padding: 10px 18px; border-radius: 20px; width: auto; margin-bottom: 0;">Mulai Sesi Cetak</button>
+  </header>
+
+  <div class="container">
+
+    <div class="left-panel" id="leftPanel">
+      <div class="sub-title">ATELIER PREVIEW</div>
+      <h3 id="selectedTitle">Série 01: Pure Oat</h3>
+      <p class="frame-desc">Pratinjau foto Anda di dalam bingkai terpilih.</p>
+
+      <div class="preview-frame-container" id="frameBox">
+        <div class="preview-photo-area">
+          <p id="placeholderText" style="font-size: 11px; color: #8c857b;">Upload foto atau buka kamera</p>
+          <img id="uploadedImage" alt="Preview Foto">
+          <video id="webcamVideo" autoplay playsinline></video>
+        </div>
+
+        <div class="shutter-wrapper" id="shutterWrapper">
+          <button class="shutter-btn" onclick="takeSnapshot()" title="Jepret Foto"></button>
+          <p style="font-size: 10px; color: #8c857b; margin-top: 4px;">Klik untuk jepret</p>
+        </div>
+      </div>
+
+      <input type="file" id="fileInput" accept="image/*" style="display: none;" onchange="handleUpload(event)">
+      <button class="btn-outline btn-action" onclick="document.getElementById('fileInput').click()">
+        📁 Pilih Foto dari File
+      </button>
+      <button class="btn-primary btn-action" onclick="openCamera()">
+        📷 Buka Kamera Langsung
+      </button>
+
+      <canvas id="captureCanvas" style="display:none;"></canvas>
+    </div>
+
+    <div class="right-panel">
+      <div class="grid-frames">
+
+        <div class="card-frame">
+          <div>
+            <div class="frame-mockup">
+              <div class="mini-photostrip">
+                <div class="mini-photo"></div>
+                <div class="mini-photo"></div>
+                <div class="mini-photo"></div>
+              </div>
+            </div>
+            <span class="badge">Bestseller</span>
+            <div class="frame-title">Série 01: Pure Oat</div>
+            <div class="frame-desc">Frame krem lembut dengan garis batas ultra-halus ala majalah fotografi.</div>
+          </div>
+
+          <div>
+            <button class="btn-primary" onclick="pilihFrame('Série 01: Pure Oat', '#f1ede4', 'count-1')">Pilih</button>
+            <div class="usage-info">
+              <span>Total Penggunaan:</span>
+              <strong id="count-1" data-value="2845">2,845x</strong>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-frame">
+          <div>
+            <div class="frame-mockup" style="background-color: #e8e2d5;">
+              <div class="mini-photostrip" style="background-color: #f8f6f0;">
+                <div class="mini-photo" style="background-color: #c5bead;"></div>
+                <div class="mini-photo" style="background-color: #c5bead;"></div>
+              </div>
+            </div>
+            <span class="badge">Tactile Luxury</span>
+            <div class="frame-title">Série 02: Linen Tactile</div>
+            <div class="frame-desc">Tekstur serat linen lembut dengan aksen emboss bayangan minimalis.</div>
+          </div>
+
+          <div>
+            <button class="btn-primary" onclick="pilihFrame('Série 02: Linen Tactile', '#e8e2d5', 'count-2')">Pilih</button>
+            <div class="usage-info">
+              <span>Total Penggunaan:</span>
+              <strong id="count-2" data-value="1920">1,920x</strong>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-frame">
+          <div>
+            <div class="frame-mockup" style="background-color: #d0e3da;">
+              <div class="mini-photostrip">
+                <div class="mini-photo" style="background-color: #a3c4b5;"></div>
+                <div class="mini-photo" style="background-color: #a3c4b5;"></div>
+                <div class="mini-photo" style="background-color: #a3c4b5;"></div>
+              </div>
+            </div>
+            <span class="badge">Organic Tone</span>
+            <div class="frame-title">Série 03: Muted Sage</div>
+            <div class="frame-desc">Nuansa hijau sage pucat yang menenangkan dengan ornamen dedaunan.</div>
+          </div>
+
+          <div>
+            <button class="btn-primary" onclick="pilihFrame('Série 03: Muted Sage', '#d0e3da', 'count-3')">Pilih</button>
+            <div class="usage-info">
+              <span>Total Penggunaan:</span>
+              <strong id="count-3" data-value="3110">3,110x</strong>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    let activeStream = null;
+
+    function pilihFrame(namaFrame, warnaBg, countId) {
+      document.getElementById('leftPanel').style.display = 'block';
+      document.getElementById('selectedTitle').innerText = namaFrame;
+      document.getElementById('frameBox').style.backgroundColor = warnaBg;
+
+      const countElement = document.getElementById(countId);
+      let currentVal = parseInt(countElement.getAttribute('data-value'), 10);
+      
+      currentVal += 1;
+      countElement.setAttribute('data-value', currentVal);
+      
+      countElement.innerText = currentVal.toLocaleString('id-ID') + 'x';
+    }
+
+    function handleUpload(event) {
+      stopCamera();
+
+      const img = document.getElementById('uploadedImage');
+      const text = document.getElementById('placeholderText');
+
+      img.src = URL.createObjectURL(event.target.files[0]);
+      img.style.display = 'block';
+      text.style.display = 'none';
+    }
+
+    function openCamera() {
+      const video = document.getElementById('webcamVideo');
+      const img = document.getElementById('uploadedImage');
+      const text = document.getElementById('placeholderText');
+      const shutter = document.getElementById('shutterWrapper');
+
+      img.style.display = 'none';
+      text.style.display = 'none';
+      video.style.display = 'block';
+
+      navigator.mediaDevices.getUserMedia({ video: true })
+        .then(function (stream) {
+          activeStream = stream;
+          video.srcObject = stream;
+          shutter.style.display = 'block';
+        })
+        .catch(function (error) {
+          alert("Akses kamera tidak diizinkan atau tidak tersedia.");
+        });
+    }
+
+    function takeSnapshot() {
+      const video = document.getElementById('webcamVideo');
+      const img = document.getElementById('uploadedImage');
+      const canvas = document.getElementById('captureCanvas');
+
+      if (!activeStream) return;
+
+      canvas.width = video.videoWidth;
+      canvas.height = video.videoHeight;
+      const ctx = canvas.getContext('2d');
+      ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+      img.src = canvas.toDataURL('image/png');
+      img.style.display = 'block';
+
+      stopCamera();
+    }
+
+    function stopCamera() {
+      const video = document.getElementById('webcamVideo');
+      const shutter = document.getElementById('shutterWrapper');
+
+      if (activeStream) {
+        activeStream.getTracks().forEach(track => track.stop());
+        activeStream = null;
+      }
+      video.style.display = 'none';
+      shutter.style.display = 'none';
+    }
+  </script>
+
+</body>
+</html>
