@@ -4,18 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Photobooth</title>
+    <!-- Menggunakan Tailwind CSS agar class utility dari kode kedua berfungsi -->
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <body>
 
+    <!-- NAVBAR -->
     <nav>
         <div class="wrapper">
-
             <div class="logo">
-                <a href="">Photobooth</a>
+                <a href="#">Photobooth</a>
             </div>
-
             <div class="menu">
                 <ul>
                     <li><a href="#home">Beranda</a></li>
@@ -25,117 +25,122 @@
                     <li><a href="" class="foto">Mulai Foto</a></li>
                 </ul>
             </div>
-
         </div>
     </nav>
 
+    <!-- SECTION HOME UTAMA -->
     <div class="wrapper">
-
         <section id="home">
-            <img src="image/contohfoto.png"/>
-
+            <img src="image/contohfoto.png" alt="Contoh Foto"/>
             <div class="kolom">
                 <p class="deskripsi">Langsung dari Layarmu</p>
-
                 <h2>Photobooth studio favoritemu</h2>
-
                 <p>
                     Abadikan momen seru bareng bestie atau pacar
                     dengan berbagai filter, stiker, dan frame lucu
                 </p>
-
                 <p>
                     <a href="" class="tbl-pelajari">
                         pelajari lebih lanjut
                     </a>
                 </p>
-            </div> </section> </div>
-
-        <section id="langkah">
-
-    <div class="langkah-container">
-
-        <div class="langkah-header">
-            <p class="deskripsi">3 Langkah Foto Ala Ican</p>
-
-            <p>
-                Gak perlu antre di mall.
-                Buka browser di laptop atau HP, langsung jadi.
-            </p>
-
-            <span>dalam 2 menit!</span>
-        </div>
-
-
-        <div class="card-container">
-
-            <!-- CARD 1 -->
-            <div class="card">
-
-                <div class="card-header">
-                    <span class="nomor satu">1</span>
-                    <span class="label">langkah 01</span>
-                </div>
-
-                <img src="image/Rectangle 14.png">
-
-                <h3>Pilih frame &amp; pose idaman</h3>
-
-                <p>
-                    Pilih dari 100+ template photostrip lucu:
-                    4-cut vertikal, grid 2x2, tema Y2K,
-                    hingga frame kolaborasi Idol Korea resmi.
-                </p>
-
-            </div>
-
-
-            <!-- CARD 2 -->
-            <div class="card">
-
-                <div class="card-header">
-                    <span class="nomor dua">2</span>
-                    <span class="label">langkah 02</span>
-                </div>
-
-                <img src="image/Rectangle 14.png">
-
-                <h3>Berekspresi di Virtual Booth</h3>
-
-                <p>
-                    Gunakan panduan pose pintar di layar.
-                    Kamera akan memotret otomatis 4 pose
-                    dengan flash natural dan timer santai.
-                </p>
-
-            </div>
-
-
-            <!-- CARD 3 -->
-            <div class="card">
-
-                <div class="card-header">
-                    <span class="nomor tiga">3</span>
-                    <span class="label">langkah 03</span>
-                </div>
-
-                <img src="image/Rectangle 14.png">
-
-                <h3>Hias dan simpan!</h3>
-
-                <p
-                    Tambahkan stiker menggemaskan,
-                    lalu simpan!
-                </p>
-
-            </div>
-
-        </div>
-
+            </div> 
+        </section> 
     </div>
 
-</section>
+    <!-- SECTION LANGKAH -->
+    <section id="langkah">
+        <div class="langkah-container">
+            <div class="langkah-header">
+                <p class="deskripsi">3 Langkah Foto Ala Ican</p>
+                <p>
+                    Gak perlu antre di mall.
+                    Buka browser di laptop atau HP, langsung jadi.
+                </p>
+                <span>dalam 2 menit!</span>
+            </div>
 
-</body>
+            <div class="card-container">
+                <!-- CARD 1 -->
+                <div class="card">
+                    <div class="card-header">
+                        <span class="nomor satu">1</span>
+                        <span class="label">langkah 01</span>
+                    </div>
+                    <img src="image/Rectangle 14.png" alt="Langkah 1">
+                    <h3>Pilih frame &amp; pose idaman</h3>
+                    <p>
+                        Pilih dari 100+ template photostrip lucu:
+                        4-cut vertikal, grid 2x2, tema Y2K,
+                        hingga frame kolaborasi Idol Korea resmi.
+                    </p>
+                </div>
+
+                <!-- CARD 2 -->
+                <div class="card">
+                    <div class="card-header">
+                        <span class="nomor dua">2</span>
+                        <span class="label">langkah 02</span>
+                    </div>
+                    <img src="image/Rectangle 14.png" alt="Langkah 2">
+                    <h3>Berekspresi di Virtual Booth</h3>
+                    <p>
+                        Gunakan panduan pose pintar di layar.
+                        Kamera akan memotret otomatis 4 pose
+                        dengan flash natural dan timer santai.
+                    </p>
+                </div>
+
+                <!-- CARD 3 -->
+                <div class="card">
+                    <div class="card-header">
+                        <span class="nomor tiga">3</span>
+                        <span class="label">langkah 03</span>
+                    </div>
+                    <img src="image/Rectangle 14.png" alt="Langkah 3">
+                    <h3>Hias dan simpan!</h3>
+                    <p>
+                        Tambahkan stiker menggemaskan,
+                        lalu simpan!
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION TAMBAHAN DARI KODE KEDUA (GLOBAL FOTO STUDIO) -->
+    <main class="relative h-[1679px] w-[826px] overflow-hidden my-10 mx-auto">
+        <section aria-label="Global Foto Studio" class="absolute left-[100px] top-0 h-[1679px] w-[832px]">
+            <!-- Background Container -->
+            <div aria-hidden="true" class="absolute left-[92px] top-8 h-[1615px] w-[642px] rotate-[6.68deg] rounded-[80px] bg-[#fcfcfc] shadow-[15px_17px_4px_#000000]"></div>
+
+            <!-- Image Layers -->
+            <img class="absolute top-[155px] left-[188px] h-[342px] w-[569px] object-cover" src="image/rectangle-86.png" alt="Rectangle">
+            <img class="absolute top-[1070px] left-[76px] h-[342px] w-[569px] object-cover" src="image/rectangle-83.png" alt="Rectangle">
+            <img class="absolute top-[766px] left-[111px] h-[342px] w-[569px] object-cover" src="image/rectangle-84.png" alt="Rectangle">
+            <img class="absolute top-[461px] left-[146px] h-[342px] w-[569px] object-cover" src="image/rectangle-85.png" alt="Rectangle">
+
+            <!-- Text Headings -->
+            <h1 class="absolute left-60 top-[86px] w-[484px] rotate-[6.87deg] font-mono text-[40px] font-normal text-[#71153a]">
+                GLOBAL FOTO - STUDIO
+            </h1>
+            <p class="absolute left-[85px] top-[1445px] w-[484px] rotate-[6.87deg] font-mono text-[40px] font-normal text-[#71153a]">
+                GLOBAL FOTO - STUDIO
+            </p>
+            <p class="absolute left-[79px] top-[1507px] w-[484px] rotate-[6.87deg] font-mono text-[40px] font-bold text-[#71153a]">
+                GLOBAL FOTO - STUDIO
+            </p>
+
+            <!-- Line Image -->
+            <img class="absolute left-[189px] top-[120px] h-[78px] w-[600px] object-cover" src="image/line-1.svg" alt="" aria-hidden="true">
+
+            <!-- Decorative Pills -->
+            <div aria-hidden="true" class="absolute top-[1346px] left-[486px] h-[38px] w-[83px] rotate-[7.41deg] rounded-[18.84px] bg-[#d9d9d9]"></div>
+            <div aria-hidden="true" class="absolute top-[1046px] left-[530px] h-[38px] w-[83px] rotate-[7.41deg] rounded-[18.84px] bg-[#d9d9d9]"></div>
+            <div aria-hidden="true" class="absolute top-[742px] left-[569px] h-[38px] w-[83px] rotate-[7.41deg] rounded-[18.84px] bg-[#d9d9d9]"></div>
+            <div aria-hidden="true" class="absolute top-[438px] left-[617px] h-[38px] w-[83px] rotate-[7.41deg] rounded-[18.84px] bg-[#d9d9d9]"></div>
+        </section>
+    </main>
+
 </body>
 </html>
