@@ -1,22 +1,45 @@
+@import url("https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css");
+
 * {
-    text-decoration: none;
-    margin: 0px;
-    padding: 0px;
+  -webkit-font-smoothing: antialiased;
+  box-sizing: border-box;
 }
 
+html,
 body {
-    margin: 0px;
-    padding: 0px;
-    font-family: sans-serif;
+  margin: 0px;
+  min-height: 100%;
+  font-family: sans-serif;
+  overflow-x: hidden;
 }
 
+button:focus-visible {
+  outline: 2px solid #4a90e2 !important;
+  outline: -webkit-focus-ring-color auto 5px !important;
+}
+
+a {
+  text-decoration: none;
+}
+
+@font-face {
+  font-family: "Iosevka Charon Mono-Regular";
+  src: local("Iosevka Charon Mono-Regular");
+}
+
+@font-face {
+  font-family: "Intel One Mono-Regular";
+  src: local("Intel One Mono-Regular");
+}
+
+/* --- NAVBAR & TAMPILAN UTAMA --- */
 .wrapper {
     width: 1100px;
     margin: auto;
     position: relative;
+    z-index: 2;
 }
 
-/* NAVBAR */
 nav {
     width: 100%;
     margin: auto;
@@ -24,6 +47,7 @@ nav {
     position: sticky;
     top: 0;
     background-color: #FAF8EC;
+    z-index: 1000;
 }
 
 nav .wrapper {
@@ -67,6 +91,7 @@ nav ul li a {
 nav ul li a:hover {
     text-decoration: underline;
 }
+
 #home{
     width: 1100px;
     max-width:100%;
@@ -78,17 +103,16 @@ nav ul li a:hover {
     gap: 40px;
     padding: 60px 20px;
     box-sizing: border-box;
-    clear:both;
 }
+
 #home img{
     width: 500px;
     max-width: 50%;
     height: auto;
-
     display: block;
-
     object-fit: contain;
 }
+
 #home .kolom{
     width: 45%;
     max-width: 45%;
@@ -100,9 +124,8 @@ nav ul li a:hover {
     padding: 60px 20px 70px;
     background-color: #FAF8EC;
     box-sizing: border-box;
-    clear: both;    
-    display: block;
-    float:none;
+    position: relative;
+    z-index: 2;
 }
 
 .langkah-container {
@@ -138,10 +161,6 @@ nav ul li a:hover {
     font-size: 14px;
     margin-top: 8px;
 }
-#langkah .kolom {
-    width: 100%;
-    margin: 0;
-}
 
 .card-container {
     width: 100%;
@@ -154,22 +173,13 @@ nav ul li a:hover {
 .card {
     flex: 1;
     min-width: 0;
-
     background-color: #FAF8EC;
-
     border-radius: 25px;
-
     padding: 12px;
-
     box-sizing: border-box;
-
     border: 1px solid #eeeeee;
-
     box-shadow: 5px 5px 0px #222;
-
     text-align: left;
-    width: 0;
-    boxq-sizing: border-box;
     overflow: hidden;
 }
 
@@ -177,92 +187,54 @@ nav ul li a:hover {
     display: flex;
     align-items: center;
     justify-content: space-between;
-
     margin-bottom: 10px;
 }
 
 .nomor {
     width: 32px;
     height: 32px;
-
     border-radius: 50%;
-
     display: flex;
     align-items: center;
     justify-content: center;
-
     font-size: 18px;
     font-weight: bold;
-
     color: black;
 }
 
-.satu {
-    background-color: #FB71A4;
-}
-
-.dua {
-    background-color: #B8A1FF;
-}
-
-.tiga {
-    background-color: #F5DA69;
-}
+.satu { background-color: #FB71A4; }
+.dua { background-color: #B8A1FF; }
+.tiga { background-color: #F5DA69; }
 
 .label {
     font-size: 11px;
     font-weight: bold;
-
     padding: 4px 8px;
-
     border-radius: 5px;
-
     background-color: #f5f0fa;
 }
 
 .card img {
-
     width: 100%;
     height: 150px;
-    max-width: 100%;
-
     object-fit: cover;
-
     border-radius: 15px;
-
     display: block;
-    box-sizing: border-box;
     margin-bottom: 12px;
-
 }
 
 .card h3 {
     font-size: 16px;
     font-weight: 600;
-
     color: #222;
-
     margin: 8px 0 6px 0;
 }
 
 .card p {
     font-size: 12px;
     line-height: 18px;
-
     color: #555;
-
     margin: 0;
-    padding: 0;
-}
-/* ISI */
-section {
-    margin-bottom: 50px;
-}
-
-.kolom {
-    width: 45%;
-    margin-top: 50px;
-    margin-bottom: 50px;
 }
 
 .kolom .deskripsi {
@@ -278,7 +250,6 @@ h2 {
     font-size: 45px;
     margin-bottom: 20px;
     color: black;
-    width: 100%;
     line-height: 50px;
 }
 
@@ -288,14 +259,11 @@ a.foto {
     margin-top: 20px;
     padding: 15px 20px;
     color: black;
-    cursor: pointer;
     font-weight: bold;
+    display: inline-block;
 }
 
-a.foto:hover {
-    background: #FB71A4;
-    text-decoration: none;
-}
+a.foto:hover { background: #FB71A4; }
 
 a.tbl-pelajari {
     background: #FB71A4;
@@ -303,16 +271,335 @@ a.tbl-pelajari {
     margin-top: 20px;
     padding: 15px 20px;
     color: black;
-    cursor: pointer;
     font-weight: bold;
+    display: inline-block;
 }
 
-a.tbl-pelajari:hover {
-    background: #F5DA69;
-    text-decoration: none;
+a.tbl-pelajari:hover { background: #F5DA69; }
+
+
+/* --- KOTAK PERTAMA --- */
+.box-pertama {
+  position: relative;
+  width: 826px;
+  height: 1679px;
+  margin: 60px auto;
+  z-index: 10; /* Angka lebih besar membuat posisinya di depan */
 }
 
-p {
-    margin: 10px 0px;
-    padding: 10px 0px;
+.box-pertama .group {
+  position: relative; 
+  top: -1100px;
+  left: -90px;
+  width: 832px;
+  height: 1679px;
+  
+  /* Tambahkan 2 baris ini untuk mengecilkan seluruh isi box secara bersamaan */
+  transform: scale(0.25); /* Angka 0.6 artinya diperkecil menjadi 60% dari ukuran asli. Kamu bisa ganti jadi 0.5 atau 0.7 sesuai kebutuhan */
+  transform-origin: top left; /* Titik acuan perubahan ukuran dari pojok kiri atas */
+}
+
+.box-pertama .rectangle {
+  position: absolute;
+  top: 32px;
+  left: 92px;
+  width: 642px;
+  height: 1615px;
+  background-color: #fcfcfc;
+  border-radius: 80px;
+  transform: rotate(6.68deg);
+  box-shadow: 15px 17px 4px #000000;
+}
+
+.box-pertama .img {
+  position: absolute;
+  top: 155px;
+  left: 188px;
+  width: 569px;
+  height: 342px;
+  object-fit: cover;
+}
+
+.box-pertama .rectangle-2 {
+  position: absolute;
+  top: 1070px;
+  left: 76px;
+  width: 569px;
+  height: 342px;
+  object-fit: cover;
+}
+
+.box-pertama .rectangle-3 {
+  position: absolute;
+  top: 766px;
+  left: 111px;
+  width: 569px;
+  height: 342px;
+  object-fit: cover;
+}
+
+.box-pertama .rectangle-4 {
+  position: absolute;
+  top: 461px;
+  left: 146px;
+  width: 569px;
+  height: 342px;
+  object-fit: cover;
+}
+
+.box-pertama .text-wrapper {
+  position: absolute;
+  top: 86px;
+  left: 240px;
+  width: 484px;
+  transform: rotate(6.87deg);
+  font-family: "Iosevka Charon Mono-Regular", Helvetica;
+  font-weight: 400;
+  color: #71153a;
+  font-size: 40px;
+}
+
+.box-pertama .div {
+  top: 1445px;
+  left: 85px;
+  font-family: "Iosevka Charon Mono-Regular", Helvetica;
+  font-weight: 400;
+  position: absolute;
+  width: 484px;
+  transform: rotate(6.87deg);
+  color: #71153a;
+  font-size: 40px;
+}
+
+.box-pertama .text-wrapper-2 {
+  top: 1507px;
+  left: 79px;
+  font-family: "Iosevka Charon Mono-Bold", Helvetica;
+  font-weight: 700;
+  position: absolute;
+  width: 484px;
+  transform: rotate(6.87deg);
+  color: #71153a;
+  font-size: 40px;
+}
+
+.box-pertama .line {
+  position: absolute;
+  top: 120px;
+  left: 189px;
+  width: 600px;
+  height: 78px;
+  object-fit: cover;
+}
+
+.box-pertama .rectangle-5 {
+  position: absolute;
+  top: 1346px;
+  left: 486px;
+  width: 83px;
+  height: 38px;
+  background-color: #d9d9d9;
+  border-radius: 18.84px;
+  transform: rotate(7.41deg);
+}
+
+.box-pertama .rectangle-6 {
+  position: absolute;
+  top: 1046px;
+  left: 530px;
+  width: 83px;
+  height: 38px;
+  background-color: #d9d9d9;
+  border-radius: 18.84px;
+  transform: rotate(7.41deg);
+}
+
+.box-pertama .rectangle-7 {
+  position: absolute;
+  top: 742px;
+  left: 569px;
+  width: 83px;
+  height: 38px;
+  background-color: #d9d9d9;
+  border-radius: 18.84px;
+  transform: rotate(7.41deg);
+}
+
+.box-pertama .rectangle-8 {
+  position: absolute;
+  top: 438px;
+  left: 617px;
+  width: 83px;
+  height: 38px;
+  background-color: #d9d9d9;
+  border-radius: 18.84px;
+  transform: rotate(7.41deg);
+}
+
+
+/* --- KOTAK KEDUA (POLAROID) --- */
+.box-kedua {
+  position: relative;
+  width: 996px;
+  height: 1136px;
+  margin: 60px auto;
+}
+
+.box-kedua .group {
+  position: absolute;
+  top: -2750px;
+  left: -100px;
+  width: 834px;
+  height: 1003px;
+  
+  /* Gabungkan rotasi dan scale dalam satu baris transform */
+  transform: rotate(-10.41deg) scale(0.25);
+  
+  transform-origin: top left;
+}
+
+.box-kedua .rectangle {
+  position: absolute;
+  top: 0;
+  left: 1px;
+  width: 827px;
+  height: 1003px;
+  background-color: #fcfcfc;
+  border-radius: 80px;
+  box-shadow: 15px 7px 4px #000000cc;
+}
+
+.box-kedua .div-kedua {
+  position: absolute;
+  top: 94px;
+  left: 37px;
+  width: 780px;
+  height: 863px;
+  background-color: #f3eafd;
+  border-radius: 53px;
+}
+
+.box-kedua .img {
+  position: absolute;
+  top: 83px;
+  left: 35px;
+  width: 403px;
+  height: 411px;
+  transform: rotate(10.41deg);
+  object-fit: cover;
+}
+
+.box-kedua .rectangle-2 {
+  position: absolute;
+  top: 459px;
+  left: 418px;
+  width: 406px;
+  height: 411px;
+  transform: rotate(10.41deg);
+  object-fit: cover;
+}
+
+.box-kedua .rectangle-3 {
+  position: absolute;
+  top: 459px;
+  left: 28px;
+  width: 410px;
+  height: 411px;
+  transform: rotate(10.41deg);
+  object-fit: cover;
+}
+
+.box-kedua .rectangle-4 {
+  position: absolute;
+  top: 86px;
+  left: 418px;
+  width: 404px;
+  height: 403px;
+  transform: rotate(10.41deg);
+  object-fit: cover;
+}
+
+.box-kedua .text-wrapper {
+  position: absolute;
+  top: 25px;
+  left: 71px;
+  width: 624px;
+  font-family: "Iosevka Charon Mono-Regular", Helvetica;
+  font-weight: 400;
+  color: #71153a;
+  font-size: 40px;
+  white-space: nowrap;
+}
+
+.box-kedua .text-wrapper-2 {
+  position: absolute;
+  top: 888px;
+  left: 87px;
+  width: 624px;
+  font-family: "Iosevka Charon Mono-Regular", Helvetica;
+  font-weight: 400;
+  color: #71153a;
+  font-size: 40px;
+  white-space: nowrap;
+}
+
+.box-kedua .text-wrapper-3 {
+  position: absolute;
+  top: 856px;
+  left: 87px;
+  width: 624px;
+  font-family: "Intel One Mono-Regular", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 24px;
+}
+
+.box-kedua .line {
+  position: absolute;
+  top: 11px;
+  left: 43px;
+  width: 751px;
+  height: 139px;
+  transform: rotate(10.41deg);
+  object-fit: cover;
+}
+
+.box-kedua .rectangle-5 {
+  position: absolute;
+  top: 772px;
+  left: 711px;
+  width: 54px;
+  height: 48px;
+  background-color: #d9d9d9;
+  border-radius: 18.84px;
+}
+
+.box-kedua .rectangle-6 {
+  position: absolute;
+  top: 777px;
+  left: 331px;
+  width: 55px;
+  height: 48px;
+  background-color: #d9d9d9;
+  border-radius: 18.84px;
+}
+
+.box-kedua .rectangle-7 {
+  position: absolute;
+  top: 395px;
+  left: 717px;
+  width: 56px;
+  height: 47px;
+  background-color: #d9d9d9;
+  border-radius: 18.84px;
+}
+
+.box-kedua .rectangle-8 {
+  position: absolute;
+  top: 398px;
+  left: 340px;
+  width: 54px;
+  height: 48px;
+  background-color: #d9d9d9;
+  border-radius: 18.84px;
 }
