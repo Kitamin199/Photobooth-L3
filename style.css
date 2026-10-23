@@ -1,4 +1,5 @@
 @import url("https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css");
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
 * {
   -webkit-font-smoothing: antialiased;
@@ -9,7 +10,7 @@ html,
 body {
   margin: 0px;
   min-height: 100%;
-  font-family: sans-serif;
+  font-family: 'Poppins', sans-serif;
   overflow-x: hidden;
 }
 
@@ -144,7 +145,7 @@ nav ul li a:hover {
 .langkah-header .deskripsi {
     font-size: 32px;
     font-weight: 800;
-    font-family: "Comic Sans MS", sans-serif;
+    font-family:'Poppins', sans-serif;
     color: #FB71A4;
     margin-bottom: 15px;
 }
@@ -240,12 +241,12 @@ nav ul li a:hover {
 .kolom .deskripsi {
     font-size: 20px;
     font-weight: bold;
-    font-family: 'comic sans ms';
+    font-family: 'Poppins', sans-serif;
     color: #FB71A4;
 }
 
 h2 {
-    font-family: 'comic sans ms';
+    font-family: 'Poppins', sans-serif;
     font-weight: 800;
     font-size: 45px;
     margin-bottom: 20px;
@@ -254,13 +255,18 @@ h2 {
 }
 
 a.foto {
+    display: inline-block;
     background: #F5DA69;
-    border-radius: 20px;
+    border-radius: 100px;
+    width: 140px;
+    height: 50px;
     margin-top: 20px;
-    padding: 15px 20px;
+    margin-bottom: 20px;
+    padding: 20px 10px;
+    line-height: 10px;
     color: black;
     font-weight: bold;
-    display: inline-block;
+    
 }
 
 a.foto:hover { background: #FB71A4; }
@@ -276,330 +282,3 @@ a.tbl-pelajari {
 }
 
 a.tbl-pelajari:hover { background: #F5DA69; }
-
-
-/* --- KOTAK PERTAMA --- */
-.box-pertama {
-  position: relative;
-  width: 826px;
-  height: 1679px;
-  margin: 60px auto;
-  z-index: 10; /* Angka lebih besar membuat posisinya di depan */
-}
-
-.box-pertama .group {
-  position: relative; 
-  top: -1100px;
-  left: -90px;
-  width: 832px;
-  height: 1679px;
-  
-  /* Tambahkan 2 baris ini untuk mengecilkan seluruh isi box secara bersamaan */
-  transform: scale(0.25); /* Angka 0.6 artinya diperkecil menjadi 60% dari ukuran asli. Kamu bisa ganti jadi 0.5 atau 0.7 sesuai kebutuhan */
-  transform-origin: top left; /* Titik acuan perubahan ukuran dari pojok kiri atas */
-}
-
-.box-pertama .rectangle {
-  position: absolute;
-  top: 32px;
-  left: 92px;
-  width: 642px;
-  height: 1615px;
-  background-color: #fcfcfc;
-  border-radius: 80px;
-  transform: rotate(6.68deg);
-  box-shadow: 15px 17px 4px #000000;
-}
-
-.box-pertama .img {
-  position: absolute;
-  top: 155px;
-  left: 188px;
-  width: 569px;
-  height: 342px;
-  object-fit: cover;
-}
-
-.box-pertama .rectangle-2 {
-  position: absolute;
-  top: 1070px;
-  left: 76px;
-  width: 569px;
-  height: 342px;
-  object-fit: cover;
-}
-
-.box-pertama .rectangle-3 {
-  position: absolute;
-  top: 766px;
-  left: 111px;
-  width: 569px;
-  height: 342px;
-  object-fit: cover;
-}
-
-.box-pertama .rectangle-4 {
-  position: absolute;
-  top: 461px;
-  left: 146px;
-  width: 569px;
-  height: 342px;
-  object-fit: cover;
-}
-
-.box-pertama .text-wrapper {
-  position: absolute;
-  top: 86px;
-  left: 240px;
-  width: 484px;
-  transform: rotate(6.87deg);
-  font-family: "Iosevka Charon Mono-Regular", Helvetica;
-  font-weight: 400;
-  color: #71153a;
-  font-size: 40px;
-}
-
-.box-pertama .div {
-  top: 1445px;
-  left: 85px;
-  font-family: "Iosevka Charon Mono-Regular", Helvetica;
-  font-weight: 400;
-  position: absolute;
-  width: 484px;
-  transform: rotate(6.87deg);
-  color: #71153a;
-  font-size: 40px;
-}
-
-.box-pertama .text-wrapper-2 {
-  top: 1507px;
-  left: 79px;
-  font-family: "Iosevka Charon Mono-Bold", Helvetica;
-  font-weight: 700;
-  position: absolute;
-  width: 484px;
-  transform: rotate(6.87deg);
-  color: #71153a;
-  font-size: 40px;
-}
-
-.box-pertama .line {
-  position: absolute;
-  top: 120px;
-  left: 189px;
-  width: 600px;
-  height: 78px;
-  object-fit: cover;
-}
-
-.box-pertama .rectangle-5 {
-  position: absolute;
-  top: 1346px;
-  left: 486px;
-  width: 83px;
-  height: 38px;
-  background-color: #d9d9d9;
-  border-radius: 18.84px;
-  transform: rotate(7.41deg);
-}
-
-.box-pertama .rectangle-6 {
-  position: absolute;
-  top: 1046px;
-  left: 530px;
-  width: 83px;
-  height: 38px;
-  background-color: #d9d9d9;
-  border-radius: 18.84px;
-  transform: rotate(7.41deg);
-}
-
-.box-pertama .rectangle-7 {
-  position: absolute;
-  top: 742px;
-  left: 569px;
-  width: 83px;
-  height: 38px;
-  background-color: #d9d9d9;
-  border-radius: 18.84px;
-  transform: rotate(7.41deg);
-}
-
-.box-pertama .rectangle-8 {
-  position: absolute;
-  top: 438px;
-  left: 617px;
-  width: 83px;
-  height: 38px;
-  background-color: #d9d9d9;
-  border-radius: 18.84px;
-  transform: rotate(7.41deg);
-}
-
-
-/* --- KOTAK KEDUA (POLAROID) --- */
-.box-kedua {
-  position: relative;
-  width: 996px;
-  height: 1136px;
-  margin: 60px auto;
-}
-
-.box-kedua .group {
-  position: absolute;
-  top: -2750px;
-  left: -100px;
-  width: 834px;
-  height: 1003px;
-  
-  /* Gabungkan rotasi dan scale dalam satu baris transform */
-  transform: rotate(-10.41deg) scale(0.25);
-  
-  transform-origin: top left;
-}
-
-.box-kedua .rectangle {
-  position: absolute;
-  top: 0;
-  left: 1px;
-  width: 827px;
-  height: 1003px;
-  background-color: #fcfcfc;
-  border-radius: 80px;
-  box-shadow: 15px 7px 4px #000000cc;
-}
-
-.box-kedua .div-kedua {
-  position: absolute;
-  top: 94px;
-  left: 37px;
-  width: 780px;
-  height: 863px;
-  background-color: #f3eafd;
-  border-radius: 53px;
-}
-
-.box-kedua .img {
-  position: absolute;
-  top: 83px;
-  left: 35px;
-  width: 403px;
-  height: 411px;
-  transform: rotate(10.41deg);
-  object-fit: cover;
-}
-
-.box-kedua .rectangle-2 {
-  position: absolute;
-  top: 459px;
-  left: 418px;
-  width: 406px;
-  height: 411px;
-  transform: rotate(10.41deg);
-  object-fit: cover;
-}
-
-.box-kedua .rectangle-3 {
-  position: absolute;
-  top: 459px;
-  left: 28px;
-  width: 410px;
-  height: 411px;
-  transform: rotate(10.41deg);
-  object-fit: cover;
-}
-
-.box-kedua .rectangle-4 {
-  position: absolute;
-  top: 86px;
-  left: 418px;
-  width: 404px;
-  height: 403px;
-  transform: rotate(10.41deg);
-  object-fit: cover;
-}
-
-.box-kedua .text-wrapper {
-  position: absolute;
-  top: 25px;
-  left: 71px;
-  width: 624px;
-  font-family: "Iosevka Charon Mono-Regular", Helvetica;
-  font-weight: 400;
-  color: #71153a;
-  font-size: 40px;
-  white-space: nowrap;
-}
-
-.box-kedua .text-wrapper-2 {
-  position: absolute;
-  top: 888px;
-  left: 87px;
-  width: 624px;
-  font-family: "Iosevka Charon Mono-Regular", Helvetica;
-  font-weight: 400;
-  color: #71153a;
-  font-size: 40px;
-  white-space: nowrap;
-}
-
-.box-kedua .text-wrapper-3 {
-  position: absolute;
-  top: 856px;
-  left: 87px;
-  width: 624px;
-  font-family: "Intel One Mono-Regular", Helvetica;
-  font-weight: 400;
-  color: #000000;
-  font-size: 24px;
-}
-
-.box-kedua .line {
-  position: absolute;
-  top: 11px;
-  left: 43px;
-  width: 751px;
-  height: 139px;
-  transform: rotate(10.41deg);
-  object-fit: cover;
-}
-
-.box-kedua .rectangle-5 {
-  position: absolute;
-  top: 772px;
-  left: 711px;
-  width: 54px;
-  height: 48px;
-  background-color: #d9d9d9;
-  border-radius: 18.84px;
-}
-
-.box-kedua .rectangle-6 {
-  position: absolute;
-  top: 777px;
-  left: 331px;
-  width: 55px;
-  height: 48px;
-  background-color: #d9d9d9;
-  border-radius: 18.84px;
-}
-
-.box-kedua .rectangle-7 {
-  position: absolute;
-  top: 395px;
-  left: 717px;
-  width: 56px;
-  height: 47px;
-  background-color: #d9d9d9;
-  border-radius: 18.84px;
-}
-
-.box-kedua .rectangle-8 {
-  position: absolute;
-  top: 398px;
-  left: 340px;
-  width: 54px;
-  height: 48px;
-  background-color: #d9d9d9;
-  border-radius: 18.84px;
-}
