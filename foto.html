@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Studio Foto</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+
+    <div class="left-panel" id="leftPanel" style="display: block;">
+      <div class="sub-title">ATELIER PREVIEW</div>
+      <h3 id="selectedTitle">Série 01: Pure Oat</h3>
+      <p class="frame-desc">Pratinjau foto Anda di dalam bingkai terpilih.</p>
+
+      <div class="preview-frame-container" id="frameBox">
+        <div class="preview-photo-area">
+          <p id="placeholderText" style="font-size: 11px; color: #8c857b;">Upload foto atau buka kamera</p>
+          <img id="uploadedImage" alt="Preview Foto">
+          <video id="webcamVideo" autoplay playsinline></video>
+        </div>
+
+        <div class="shutter-wrapper" id="shutterWrapper">
+          <button class="shutter-btn" onclick="takeSnapshot()" title="Jepret Foto"></button>
+          <p style="font-size: 10px; color: #8c857b; margin-top: 4px;">Klik untuk jepret</p>
+        </div>
+      </div>
+
+      <input type="file" id="fileInput" accept="image/*" style="display: none;" onchange="handleUpload(event)">
+      <button class="btn-outline btn-action" onclick="document.getElementById('fileInput').click()">
+        📁 Pilih Foto dari File
+      </button>
+      <button class="btn-primary btn-action" onclick="openCamera()">
+        📷 Buka Kamera Langsung
+      </button>
+      <button class="btn-mulaicetak">Mulai Sesi Cetak</button>
+
+      <canvas id="captureCanvas" style="display:none;"></canvas>
+    </div>
+</div>  
+
+    <script>
+    let activeStream = null;
+
+    function handleUpload(event) {
+      stopCamera();
+
+      const img = document.getElementById('uploadedImage');
+      const text = document.getElementById('placeholderText');
+
+      img.src = URL.createObjectURL(event.target.files[0]);
+      img.style.display = 'block';
+      text.style.display = 'none';
+    }
+
+    function openCamera() {
+      const video = document.getElementById('webcamVideo');
+      const img = document.getElementById('uploadedImage');
+      const text = document.getElementById('placeholderText');
+      const shutter = document.getElementById('shutterWrapper');
+
+      img.style.display = 'none';
+      text.style.display = 'none';
+      video.style.display = 'block';
+
+      navigator.mediaDevices.getUserMedia({ video: true })
+        .then(function (stream) {
+          activeStream = stream;
+          video.srcObject = stream;
+          shutter.style.display = 'block';
+        })
+        .catch(function (error) {
+          alert("Akses kamera tidak diizinkan atau tidak tersedia.");
+        });
+    }
+
+    function takeSnapshot() {
+      const video = document.getElementById('webcamVideo');
+      const img = document.getElementById('uploadedImage');
+      const canvas = document.getElementById('captureCanvas');
+
+      if (!activeStream) return;
+
+      canvas.width = video.videoWidth;
+      canvas.height = video.videoHeight;
+      const ctx = canvas.getContext('2d');
+      ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+      img.src = canvas.toDataURL('image/png');
+      img.style.display = 'block';
+
+      stopCamera();
+    }
+
+    function stopCamera() {
+      const video = document.getElementById('webcamVideo');
+      const shutter = document.getElementById('shutterWrapper');
+
+      if (activeStream) {
+        activeStream.getTracks().forEach(track => track.stop());
+        activeStream = null;
+      }
+      video.style.display = 'none';
+      shutter.style.display = 'none';
+    }
+  </script>
+
+</body>
+</html>
