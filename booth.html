@@ -3,138 +3,184 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PhotoBooth - Beranda & Studio</title>
+    <title>Virtual Photobooth - Studio</title>
     <link rel="stylesheet" href="style.css">
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Fredoka:wght@600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&family=Fredoka:wght@600;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <!-- NAVBAR MODERN -->
+    <!-- NAVBAR KHUSUS BOOTH -->
     <nav class="modern-nav">
         <div class="nav-container">
             <div class="logo">
                 <a href="index.html"><svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4h-4L8 7H4a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-4z"/><circle cx="12" cy="13" r="4"/></svg>PhotoBooth<span class="logo-dot">.</span></a>
             </div>
             <ul class="nav-menu">
-                <li><a href="#home" class="nav-link active">Beranda</a></li>
-                <li><a href="booth.html" class="nav-link">Studio Booth</a></li>
-                <li><a href="#langkah" class="nav-link">Frame &amp; Strip</a></li>
-                <li><a href="booth.html" class="nav-link">Filter &amp; Stiker</a></li>
+                <li><a href="index.html#home" class="nav-link">Beranda</a></li>
+                <li><a href="booth.html" class="nav-link active">Studio Booth </a></li>
             </ul>
             <div class="nav-right">
-                <a href="booth.html" class="nav-cta-btn">Mulai Foto </a>
             </div>
         </div>
     </nav>
 
-    <!-- HERO SECTION UTAMA -->
-    <section class="hero-section" id="home">
-        <div class="hero-content">
-            <div class="badge-booth">
-                 NO. 1 VIRTUAL PHOTOBOOTH
-            </div>
-            <h1 class="hero-title">
-                Foto Booth Studio Favoritmu, Sekarang<br>
-                <span class="highlight-text">Langsung dari Layarmu!</span> 
-            </h1>
-            <p class="hero-desc">
-                Abadikan momen seru bareng bestie atau pacar dengan filter Y2K, stiker khas, frame 4-cut ikonik, dan opsi cetak fisik dikirim langsung ke pintu rumahmu.
-            </p>
-            <div class="hero-buttons">
-                <a href="booth.html" class="btn-primary-pink">
-                     Mulai Foto Gratis Sekarang 
-                </a>
-                <a href="#langkah" class="btn-secondary-outline">
-                     Lihat Cara Pakai
-                </a>
-            </div>
-            <div class="hero-features">
-                <div class="feat-item">100% Kamera HD</div>
-                <div class="feat-item">Auto Pose Assist</div>
-                <div class="feat-item">Kirim Kilat 1 Hari</div>
-                <div class="feat-item">4.9/5 (85K+ Bestie)</div>
-            </div>
+    <!-- WRAPPER UTAMA STUDIO PHOTOBOOTH -->
+    <div class="booth-page-wrapper">
+        
+        
+
+        <!-- BADGE ATAS -->
+        <div class="rectangle-24">
+             NO. 1 VIRTUAL PHOTOBOOTH STUDIO 
         </div>
 
-        <div class="hero-visual">
-            <!-- FRAME 1: MODEL GRID 4-CUT -->
-            <div class="photostrip-grid-frame">
-                <div class="grid-header">GLOBAL FOTO - STUDIO</div>
-                <div class="grid-container">
-                    <img src="images/Photobox1.png" alt="Foto 1" onerror="this.onerror=null;this.src='images/Photobox1.png'">
-                    <img src="images/Photobox2.png" alt="Foto 2" onerror="this.onerror=null;this.src='images/Photobox1.png'">
-                    <img src="images/Photobox1.png" alt="Foto 3" onerror="this.onerror=null;this.src='images/Photobox1.png'">
-                    <img src="images/Photobox2.png" alt="Foto 4" onerror="this.onerror=null;this.src='images/Photobox1.png'">
+        <!-- KOTAK UTAMA STUDIO -->
+        <div class="box">
+            
+            <!-- AREA KAMERA UTAMA (KIRI) -->
+            <div class="camera-section">
+                
+                <div class="camera-container">
+                    <!-- Overlays & Frame Corner Kamera -->
+                    <div class="camera-live-badge" id="camera-status-badge">STANDBY</div>
+                    <div class="shot-counter-badge" id="shot-counter" style="display: none;">Pose 1 / 4</div>
+                    
+                    <div class="corner-bracket top-left"></div>
+                    <div class="corner-bracket top-right"></div>
+                    <div class="corner-bracket bottom-left"></div>
+                    <div class="corner-bracket bottom-right"></div>
+
+                    <!-- Overlay Hitung Mundur & Efek Blitz Flash -->
+                    <div id="countdown-overlay" class="countdown-overlay"></div>
+                    <div id="flash-overlay" class="flash-overlay"></div>
+
+                    <video id="webcam" autoplay playsinline muted></video>
+                    
+                    <button id="btn-start-camera">
+                        <svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4h-4L8 7H4a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-4z"/><circle cx="12" cy="13" r="4"/></svg>Nyalakan Kamera
+                    </button>
                 </div>
-                <div class="grid-footer">
-                    <span class="grid-date">2026-10-23</span>
-                    <span class="grid-brand">GLOBAL FOTO</span>
+
+                <!-- BARIS AKSI BAWAH KAMERA (FILTER, SHUTTER, OPSI) -->
+                <div class="booth-action-row">
+                    <!-- Menu Kiri -->
+                    <div class="bottom-left-menu">
+                        <button type="button" class="menu-icon-btn" id="btn-filter" title="Ganti Filter Kamera">
+                            <svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16M4 17h16"/><circle cx="8" cy="7" r="3"/><circle cx="16" cy="17" r="3"/></svg>
+                            <span class="menu-label" id="filter-label">Normal</span>
+                        </button>
+                        <button type="button" class="menu-icon-btn active-feature" id="btn-sticker" title="Tampilkan Stiker di Frame">
+                            <svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v9zM14 21v-5a2 2 0 0 1 2-2h5"/></svg>
+                            <span class="menu-label">Sticker: ON</span>
+                        </button>
+                        <button type="button" class="menu-icon-btn" id="btn-scroll-result" title="Lihat Hasil Foto">
+                            <svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8" cy="8" r="1"/><path d="m3 17 5-5 4 4 4-6 5 7"/></svg>
+                            <span class="menu-label">Hasil</span>
+                        </button>
+                    </div>
+
+                    <!-- Tombol Shutter Utama (Bulat Pink Besar di Tengah) -->
+                    <div class="shutter-wrapper">
+                        <button type="button" class="ellipse" id="btn-capture" title="Ambil Foto Photostrip">
+                            <div class="shutter-inner"></div>
+                        </button>
+                    </div>
+
+                    <!-- Opsi Kanan (Flash, Timer, Flip) -->
+                    <div class="bottom-right-options">
+                        <button type="button" class="option-icon-btn active" id="btn-flash" title="Efek Flash Layar" aria-label="Efek flash layar"><svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m13 2-9 12h7l-1 8 10-12h-7z"/></svg></button>
+                        <button type="button" class="option-icon-btn" id="btn-timer" title="Durasi Hitung Mundur">3s</button>
+                        <button type="button" class="option-icon-btn active" id="btn-mirror" title="Mirror Kamera" aria-label="Mirror kamera"><svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v18M3 7l5 5-5 5zM21 7l-5 5 5 5z"/></svg></button>
+                    </div>
+                </div>
+
+                <!-- TOMBOL MATIKAN KAMERA -->
+                <div style="text-align: center; margin-top: 5px;">
+                    <button id="btn-stop-camera" class="btn-stop" style="display: none;">Matikan Kamera</button>
                 </div>
             </div>
 
-            <!-- FRAME 2: MODEL CLASSIC STRIP VERTIKAL -->
-            <div class="photostrip-strip-frame">
-                <div class="strip-header">GLOBAL FOTO - STUDIO</div>
-                <div class="strip-container">
-                    <img src="images/Photobox1.png" alt="Foto 1" onerror="this.onerror=null;this.src='images/Photobox1.png'">
-                    <img src="images/Photobox2.png" alt="Foto 2" onerror="this.onerror=null;this.src='images/Photobox1.png'">
-                    <img src="images/Photobox1.png" alt="Foto 3" onerror="this.onerror=null;this.src='images/Photobox1.png'">
-                    <img src="images/Photobox2.png" alt="Foto 4" onerror="this.onerror=null;this.src='images/Photobox1.png'">
+            <!-- SIDEBAR PANEL KANAN (PILIH LAYOUT & TEMA) -->
+            <div class="rectangle-2">
+                <div class="sidebar-header">
+                    
+                    <div class="text-wrapper-10">PILIH LAYOUT</div>
                 </div>
-                <div class="strip-footer">
-                    <p>GLOBAL FOTO - STUDIO</p>
-                    <p>BESTIE EDITION </p>
+
+                <div class="layout-options-container">
+                    <!-- 4 Cut Grid -->
+                    <div class="layout-box active" data-layout="4cut">
+                        <div class="layout-preview-icon grid-4">
+                            <span></span><span></span><span></span><span></span>
+                        </div>
+                        <div class="layout-info">
+                            <span class="layout-name">4 CUT</span>
+                            <span class="layout-tag">Grid 2x2 (4 Foto)</span>
+                        </div>
+                    </div>
+
+                    <!-- 2 Cut -->
+                    <div class="layout-box" data-layout="2cut">
+                        <div class="layout-preview-icon grid-2">
+                            <span></span><span></span>
+                        </div>
+                        <div class="layout-info">
+                            <span class="layout-name">2 CUT</span>
+                            <span class="layout-tag">Wide Duo (2 Foto)</span>
+                        </div>
+                    </div>
+
+                    <!-- 4 Strip -->
+                    <div class="layout-box" data-layout="4strip">
+                        <div class="layout-preview-icon grid-strip">
+                            <span></span><span></span><span></span><span></span>
+                        </div>
+                        <div class="layout-info">
+                            <span class="layout-name">4 STRIP</span>
+                            <span class="layout-tag">Classic Vertikal (4 Foto)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pilihan Tema Warna Frame Strip -->
+                <div class="sidebar-header" style="margin-top: 8px;">
+                    
+                    <div class="text-wrapper-10">WARNA FRAME</div>
+                </div>
+                <div class="sidebar-strip-preview">
+                    <div class="strip-card-mini active-theme" data-theme="white" title="Tema Putih Klasik">
+                        <div class="mini-photo-placeholder"></div>
+                        <div class="mini-photo-placeholder"></div>
+                        <span class="theme-caption">Putih</span>
+                    </div>
+                    <div class="strip-card-mini pink-theme" data-theme="pink" title="Tema Pink Y2K">
+                        <div class="mini-photo-placeholder"></div>
+                        <div class="mini-photo-placeholder"></div>
+                        <span class="theme-caption">Pink Y2K</span>
+                    </div>
+                    <div class="strip-card-mini purple-theme" data-theme="purple" title="Tema Ungu Pastel">
+                        <div class="mini-photo-placeholder"></div>
+                        <div class="mini-photo-placeholder"></div>
+                        <span class="theme-caption">Ungu</span>
+                    </div>
                 </div>
             </div>
+
         </div>
-    </section>
+    </div>
 
-    <!-- SECTION LANGKAH -->
-    <section id="langkah">
-        <div class="langkah-container">
-            <div class="langkah-header">
-                <div class="badge-langkah">3 Langkah Mudah</div>
-                <h2 class="deskripsi">3 Langkah Foto Ala Ican</h2>
-                <p>Gak perlu antre di mall. Buka browser di laptop atau HP, langsung jadi dalam 2 menit!</p>
-            </div>
-            <div class="card-container">
-                <div class="card">
-                    <div class="card-header">
-                        <span class="nomor satu">1</span>
-                        <span class="label">langkah 01</span>
-                    </div>
-                    <img src="images/Photobox3.png" alt="Langkah 1" onerror="this.onerror=null;this.src='images/Photobox1.png'">
-                    <div class="card-body">
-                        <h3>Pilih Frame &amp; Pose Idaman</h3>
-                        <p>Pilih dari template photostrip lucu: 4-cut grid 2x2, 2-cut wide duo, atau 4-strip vertikal klasik.</p>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-header">
-                        <span class="nomor dua">2</span>
-                        <span class="label">langkah 02</span>
-                    </div>
-                    <img src="images/Photobox3.png" alt="Langkah 2" onerror="this.onerror=null;this.src='images/Photobox1.png'">
-                    <div class="card-body">
-                        <h3>Berekspresi di Virtual Booth</h3>
-                        <p>Gunakan filter real-time di layar dengan efek flash natural dan hitung mundur otomatis.</p>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-header">
-                        <span class="nomor tiga">3</span>
-                        <span class="label">langkah 03</span>
-                    </div>
-                    <img src="images/Photobox3.png" alt="Langkah 3" onerror="this.onerror=null;this.src='images/Photobox1.png'">
-                    <div class="card-body">
-                        <h3>Hias &amp; Simpan / Cetak!</h3>
-                        <p>Tambahkan stiker menggemaskan, ganti warna frame, lalu unduh hasilnya dalam kualitas HD gratis!</p>
-                    </div>
-                </div>
-            </div>
+    <!-- PREVIEW HASIL FOTO -->
+    <div id="result-container" style="display: none;">
+        <h3 class="result-title">Hasil Photostrip Kamu</h3>
+        <p class="result-subtitle">Tips: Kamu masih bisa klik ganti <b>Warna Frame</b>atau <b>Sticker</b>di atas secara langsung!</p>
+        <img id="photo-preview" src="" alt="Hasil Foto"/><br>
+        <div class="result-actions">
+            <a id="btn-download" download="photobooth-ican.png" class="btn-download-act">Simpan Ke Galeri</a>
+            <button type="button" id="btn-retake" class="btn-secondary-outline">Foto Ulang</button>
         </div>
-    </section>
+    </div>
 
+    <!-- Panggil Script Utama di Akhir Body -->
+    <script src="script.js"></script>
 </body>
 </html>
