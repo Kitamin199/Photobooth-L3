@@ -3,108 +3,184 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Studio Foto</title>
+    <title>Virtual Photobooth - Studio</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&family=Fredoka:wght@600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="container">
 
-    <div class="left-panel" id="leftPanel" style="display: block;">
-      <div class="sub-title">ATELIER PREVIEW</div>
-      <h3 id="selectedTitle">Série 01: Pure Oat</h3>
-      <p class="frame-desc">Pratinjau foto Anda di dalam bingkai terpilih.</p>
+    <!-- NAVBAR KHUSUS BOOTH -->
+    <nav class="modern-nav">
+        <div class="nav-container">
+            <div class="logo">
+                <a href="index.html"><svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4h-4L8 7H4a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-4z"/><circle cx="12" cy="13" r="4"/></svg>PhotoBooth<span class="logo-dot">.</span></a>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html#home" class="nav-link">Beranda</a></li>
+                <li><a href="booth.html" class="nav-link active">Studio Booth </a></li>
+            </ul>
+            <div class="nav-right">
+            </div>
+        </div>
+    </nav>
 
-      <div class="preview-frame-container" id="frameBox">
-        <div class="preview-photo-area">
-          <p id="placeholderText" style="font-size: 11px; color: #8c857b;">Upload foto atau buka kamera</p>
-          <img id="uploadedImage" alt="Preview Foto">
-          <video id="webcamVideo" autoplay playsinline></video>
+    <!-- WRAPPER UTAMA STUDIO PHOTOBOOTH -->
+    <div class="booth-page-wrapper">
+        
+        
+
+        <!-- BADGE ATAS -->
+        <div class="rectangle-24">
+             NO. 1 VIRTUAL PHOTOBOOTH STUDIO 
         </div>
 
-        <div class="shutter-wrapper" id="shutterWrapper">
-          <button class="shutter-btn" onclick="takeSnapshot()" title="Jepret Foto"></button>
-          <p style="font-size: 10px; color: #8c857b; margin-top: 4px;">Klik untuk jepret</p>
+        <!-- KOTAK UTAMA STUDIO -->
+        <div class="box">
+            
+            <!-- AREA KAMERA UTAMA (KIRI) -->
+            <div class="camera-section">
+                
+                <div class="camera-container">
+                    <!-- Overlays & Frame Corner Kamera -->
+                    <div class="camera-live-badge" id="camera-status-badge">STANDBY</div>
+                    <div class="shot-counter-badge" id="shot-counter" style="display: none;">Pose 1 / 4</div>
+                    
+                    <div class="corner-bracket top-left"></div>
+                    <div class="corner-bracket top-right"></div>
+                    <div class="corner-bracket bottom-left"></div>
+                    <div class="corner-bracket bottom-right"></div>
+
+                    <!-- Overlay Hitung Mundur & Efek Blitz Flash -->
+                    <div id="countdown-overlay" class="countdown-overlay"></div>
+                    <div id="flash-overlay" class="flash-overlay"></div>
+
+                    <video id="webcam" autoplay playsinline muted></video>
+                    
+                    <button id="btn-start-camera">
+                        <svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4h-4L8 7H4a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-4z"/><circle cx="12" cy="13" r="4"/></svg>Nyalakan Kamera
+                    </button>
+                </div>
+
+                <!-- BARIS AKSI BAWAH KAMERA (FILTER, SHUTTER, OPSI) -->
+                <div class="booth-action-row">
+                    <!-- Menu Kiri -->
+                    <div class="bottom-left-menu">
+                        <button type="button" class="menu-icon-btn" id="btn-filter" title="Ganti Filter Kamera">
+                            <svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16M4 17h16"/><circle cx="8" cy="7" r="3"/><circle cx="16" cy="17" r="3"/></svg>
+                            <span class="menu-label" id="filter-label">Normal</span>
+                        </button>
+                        <button type="button" class="menu-icon-btn active-feature" id="btn-sticker" title="Tampilkan Stiker di Frame">
+                            <svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v9zM14 21v-5a2 2 0 0 1 2-2h5"/></svg>
+                            <span class="menu-label">Sticker: ON</span>
+                        </button>
+                        <button type="button" class="menu-icon-btn" id="btn-scroll-result" title="Lihat Hasil Foto">
+                            <svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8" cy="8" r="1"/><path d="m3 17 5-5 4 4 4-6 5 7"/></svg>
+                            <span class="menu-label">Hasil</span>
+                        </button>
+                    </div>
+
+                    <!-- Tombol Shutter Utama (Bulat Pink Besar di Tengah) -->
+                    <div class="shutter-wrapper">
+                        <button type="button" class="ellipse" id="btn-capture" title="Ambil Foto Photostrip">
+                            <div class="shutter-inner"></div>
+                        </button>
+                    </div>
+
+                    <!-- Opsi Kanan (Flash, Timer, Flip) -->
+                    <div class="bottom-right-options">
+                        <button type="button" class="option-icon-btn active" id="btn-flash" title="Efek Flash Layar" aria-label="Efek flash layar"><svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m13 2-9 12h7l-1 8 10-12h-7z"/></svg></button>
+                        <button type="button" class="option-icon-btn" id="btn-timer" title="Durasi Hitung Mundur">3s</button>
+                        <button type="button" class="option-icon-btn active" id="btn-mirror" title="Mirror Kamera" aria-label="Mirror kamera"><svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v18M3 7l5 5-5 5zM21 7l-5 5 5 5z"/></svg></button>
+                    </div>
+                </div>
+
+                <!-- TOMBOL MATIKAN KAMERA -->
+                <div style="text-align: center; margin-top: 5px;">
+                    <button id="btn-stop-camera" class="btn-stop" style="display: none;">Matikan Kamera</button>
+                </div>
+            </div>
+
+            <!-- SIDEBAR PANEL KANAN (PILIH LAYOUT & TEMA) -->
+            <div class="rectangle-2">
+                <div class="sidebar-header">
+                    
+                    <div class="text-wrapper-10">PILIH LAYOUT</div>
+                </div>
+
+                <div class="layout-options-container">
+                    <!-- 4 Cut Grid -->
+                    <div class="layout-box active" data-layout="4cut">
+                        <div class="layout-preview-icon grid-4">
+                            <span></span><span></span><span></span><span></span>
+                        </div>
+                        <div class="layout-info">
+                            <span class="layout-name">4 CUT</span>
+                            <span class="layout-tag">Grid 2x2 (4 Foto)</span>
+                        </div>
+                    </div>
+
+                    <!-- 2 Cut -->
+                    <div class="layout-box" data-layout="2cut">
+                        <div class="layout-preview-icon grid-2">
+                            <span></span><span></span>
+                        </div>
+                        <div class="layout-info">
+                            <span class="layout-name">2 CUT</span>
+                            <span class="layout-tag">Wide Duo (2 Foto)</span>
+                        </div>
+                    </div>
+
+                    <!-- 4 Strip -->
+                    <div class="layout-box" data-layout="4strip">
+                        <div class="layout-preview-icon grid-strip">
+                            <span></span><span></span><span></span><span></span>
+                        </div>
+                        <div class="layout-info">
+                            <span class="layout-name">4 STRIP</span>
+                            <span class="layout-tag">Classic Vertikal (4 Foto)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pilihan Tema Warna Frame Strip -->
+                <div class="sidebar-header" style="margin-top: 8px;">
+                    
+                    <div class="text-wrapper-10">WARNA FRAME</div>
+                </div>
+                <div class="sidebar-strip-preview">
+                    <div class="strip-card-mini active-theme" data-theme="white" title="Tema Putih Klasik">
+                        <div class="mini-photo-placeholder"></div>
+                        <div class="mini-photo-placeholder"></div>
+                        <span class="theme-caption">Putih</span>
+                    </div>
+                    <div class="strip-card-mini pink-theme" data-theme="pink" title="Tema Pink Y2K">
+                        <div class="mini-photo-placeholder"></div>
+                        <div class="mini-photo-placeholder"></div>
+                        <span class="theme-caption">Pink Y2K</span>
+                    </div>
+                    <div class="strip-card-mini purple-theme" data-theme="purple" title="Tema Ungu Pastel">
+                        <div class="mini-photo-placeholder"></div>
+                        <div class="mini-photo-placeholder"></div>
+                        <span class="theme-caption">Ungu</span>
+                    </div>
+                </div>
+            </div>
+
         </div>
-      </div>
-
-      <input type="file" id="fileInput" accept="image/*" style="display: none;" onchange="handleUpload(event)">
-      <button class="btn-outline btn-action" onclick="document.getElementById('fileInput').click()">
-        📁 Pilih Foto dari File
-      </button>
-      <button class="btn-primary btn-action" onclick="openCamera()">
-        📷 Buka Kamera Langsung
-      </button>
-      <button class="btn-mulaicetak">Mulai Sesi Cetak</button>
-
-      <canvas id="captureCanvas" style="display:none;"></canvas>
     </div>
-</div>  
 
-    <script>
-    let activeStream = null;
+    <!-- PREVIEW HASIL FOTO -->
+    <div id="result-container" style="display: none;">
+        <h3 class="result-title">Hasil Photostrip Kamu</h3>
+        <p class="result-subtitle">Tips: Kamu masih bisa klik ganti <b>Warna Frame</b>atau <b>Sticker</b>di atas secara langsung!</p>
+        <img id="photo-preview" src="" alt="Hasil Foto"/><br>
+        <div class="result-actions">
+            <a id="btn-download" download="photobooth-ican.png" class="btn-download-act">Simpan Ke Galeri</a>
+            <button type="button" id="btn-retake" class="btn-secondary-outline">Foto Ulang</button>
+        </div>
+    </div>
 
-    function handleUpload(event) {
-      stopCamera();
-
-      const img = document.getElementById('uploadedImage');
-      const text = document.getElementById('placeholderText');
-
-      img.src = URL.createObjectURL(event.target.files[0]);
-      img.style.display = 'block';
-      text.style.display = 'none';
-    }
-
-    function openCamera() {
-      const video = document.getElementById('webcamVideo');
-      const img = document.getElementById('uploadedImage');
-      const text = document.getElementById('placeholderText');
-      const shutter = document.getElementById('shutterWrapper');
-
-      img.style.display = 'none';
-      text.style.display = 'none';
-      video.style.display = 'block';
-
-      navigator.mediaDevices.getUserMedia({ video: true })
-        .then(function (stream) {
-          activeStream = stream;
-          video.srcObject = stream;
-          shutter.style.display = 'block';
-        })
-        .catch(function (error) {
-          alert("Akses kamera tidak diizinkan atau tidak tersedia.");
-        });
-    }
-
-    function takeSnapshot() {
-      const video = document.getElementById('webcamVideo');
-      const img = document.getElementById('uploadedImage');
-      const canvas = document.getElementById('captureCanvas');
-
-      if (!activeStream) return;
-
-      canvas.width = video.videoWidth;
-      canvas.height = video.videoHeight;
-      const ctx = canvas.getContext('2d');
-      ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
-
-      img.src = canvas.toDataURL('image/png');
-      img.style.display = 'block';
-
-      stopCamera();
-    }
-
-    function stopCamera() {
-      const video = document.getElementById('webcamVideo');
-      const shutter = document.getElementById('shutterWrapper');
-
-      if (activeStream) {
-        activeStream.getTracks().forEach(track => track.stop());
-        activeStream = null;
-      }
-      video.style.display = 'none';
-      shutter.style.display = 'none';
-    }
-  </script>
-
+    <!-- Panggil Script Utama di Akhir Body -->
+    <script src="script.js"></script>
 </body>
 </html>
