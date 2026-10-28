@@ -1,101 +1,140 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Photobooth</title>
+    <title>PhotoBooth - Beranda & Studio</title>
     <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Fredoka:wght@600;700&display=swap" rel="stylesheet">
 </head>
-<body class="home-page">
+<body>
 
-    <!-- NAVBAR -->
-    <nav>
-        <div class="wrapper">
+    <!-- NAVBAR MODERN -->
+    <nav class="modern-nav">
+        <div class="nav-container">
             <div class="logo">
-                <a href="#">Photobooth</a>
+                <a href="index.html"><svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4h-4L8 7H4a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-4z"/><circle cx="12" cy="13" r="4"/></svg>PhotoBooth<span class="logo-dot">.</span></a>
             </div>
-            <div class="menu">
-                <ul>
-                    <li><a href="index.html">Beranda</a></li>
-                    <li><a href="#galeri">Galeri</a></li>
-                    <li><a href="frame.html" class="foto">Mulai Foto</a></li>
-                </ul>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link active">Beranda</a></li>
+                <li><a href="booth.html" class="nav-link">Studio Booth</a></li>
+                <li><a href="#langkah" class="nav-link">Frame &amp; Strip</a></li>
+                <li><a href="booth.html" class="nav-link">Filter &amp; Stiker</a></li>
+            </ul>
+            <div class="nav-right">
+                <a href="booth.html" class="nav-cta-btn">Mulai Foto </a>
             </div>
         </div>
     </nav>
 
-    <!-- SECTION HOME UTAMA -->
-    <div class="wrapper">
-        <section id="home">
-            <img src="image/Polaroid.png" alt="Polaroid"/>
-            <div class="kolom">
-                <p class="deskripsi">Langsung dari Layarmu</p>
-                <h2>Photobooth Studio Favoritmu</h2>
-                <p>
-                    Abadikan momen seru bareng bestie atau pacar
-                    dengan berbagai filter, stiker, dan frame lucu
-                </p>
-            </div> 
-        </section> 
-    </div>
+    <!-- HERO SECTION UTAMA -->
+    <section class="hero-section" id="home">
+        <div class="hero-content">
+            <div class="badge-booth">
+                 NO. 1 VIRTUAL PHOTOBOOTH
+            </div>
+            <h1 class="hero-title">
+                Foto Booth Studio Favoritmu, Sekarang<br>
+                <span class="highlight-text">Langsung dari Layarmu!</span> 
+            </h1>
+            <p class="hero-desc">
+                Abadikan momen seru bareng bestie atau pacar dengan filter Y2K, stiker khas, frame 4-cut ikonik, dan opsi cetak fisik dikirim langsung ke pintu rumahmu.
+            </p>
+            <div class="hero-buttons">
+                <a href="booth.html" class="btn-primary-pink">
+                     Mulai Foto Gratis Sekarang 
+                </a>
+                <a href="#langkah" class="btn-secondary-outline">
+                     Lihat Cara Pakai
+                </a>
+            </div>
+            <div class="hero-features">
+                <div class="feat-item">100% Kamera HD</div>
+                <div class="feat-item">Auto Pose Assist</div>
+                <div class="feat-item">Kirim Kilat 1 Hari</div>
+                <div class="feat-item">4.9/5 (85K+ Bestie)</div>
+            </div>
+        </div>
 
-    <!-- SECTION LANGKAH -->
-    <section id="langkah">
-        <div class="langkah-container">
-            <div class="langkah-header">
-                <p class="deskripsi">3 Langkah Foto!</p>
-                <p>
-                    Gak perlu antre di mall.
-                    Buka browser di laptop atau HP, langsung jadi.
-                </p>
-                <span>dalam 2 menit!</span>
+        <div class="hero-visual">
+            <!-- FRAME 1: MODEL GRID 4-CUT -->
+            <div class="photostrip-grid-frame">
+                <div class="grid-header">GLOBAL FOTO - STUDIO</div>
+                <div class="grid-container">
+                    <img src="images/Photobox1.png" alt="Foto 1" onerror="this.onerror=null;this.src='images/Photobox1.png'">
+                    <img src="images/Photobox2.png" alt="Foto 2" onerror="this.onerror=null;this.src='images/Photobox1.png'">
+                    <img src="images/Photobox1.png" alt="Foto 3" onerror="this.onerror=null;this.src='images/Photobox1.png'">
+                    <img src="images/Photobox2.png" alt="Foto 4" onerror="this.onerror=null;this.src='images/Photobox1.png'">
+                </div>
+                <div class="grid-footer">
+                    <span class="grid-date">2026-10-23</span>
+                    <span class="grid-brand">GLOBAL FOTO</span>
+                </div>
             </div>
 
-            <div class="card-container">
-                <!-- CARD 1 -->
-                <div class="card">
-                    <div class="card-header">
-                        <span class="nomor satu">1</span>
-                        <span class="label">langkah 01</span>
-                    </div>
-                    <img src="image/Rectangle 14.png" alt="Langkah 1">
-                    <h3>Pilih frame &amp; pose idaman</h3>
-                    <p>
-                        Pilih dari 100+ template photostrip lucu:
-                        4-cut vertikal, grid 2x2, tema Y2K,
-                        hingga frame kolaborasi Idol Korea resmi.
-                    </p>
+            <!-- FRAME 2: MODEL CLASSIC STRIP VERTIKAL -->
+            <div class="photostrip-strip-frame">
+                <div class="strip-header">GLOBAL FOTO - STUDIO</div>
+                <div class="strip-container">
+                    <img src="images/Photobox1.png" alt="Foto 1" onerror="this.onerror=null;this.src='images/Photobox1.png'">
+                    <img src="images/Photobox2.png" alt="Foto 2" onerror="this.onerror=null;this.src='images/Photobox1.png'">
+                    <img src="images/Photobox1.png" alt="Foto 3" onerror="this.onerror=null;this.src='images/Photobox1.png'">
+                    <img src="images/Photobox2.png" alt="Foto 4" onerror="this.onerror=null;this.src='images/Photobox1.png'">
                 </div>
-
-                <!-- CARD 2 -->
-                <div class="card">
-                    <div class="card-header">
-                        <span class="nomor dua">2</span>
-                        <span class="label">langkah 02</span>
-                    </div>
-                    <img src="image/Rectangle 14.png" alt="Langkah 2">
-                    <h3>Berekspresi di Virtual Booth</h3>
-                    <p>
-                        Gunakan panduan pose pintar di layar.
-                        Kamera akan memotret otomatis 4 pose
-                        dengan flash natural dan timer santai.
-                    </p>
-                </div>
-
-                <!-- CARD 3 -->
-                <div class="card">
-                    <div class="card-header">
-                        <span class="nomor tiga">3</span>
-                        <span class="label">langkah 03</span>
-                    </div>
-                    <img src="image/Rectangle 14.png" alt="Langkah 3">
-                    <h3>Hias dan simpan!</h3>
-                    <p>
-                        Tambahkan stiker menggemaskan,
-                        lalu simpan!
-                    </p>
+                <div class="strip-footer">
+                    <p>GLOBAL FOTO - STUDIO</p>
+                    <p>BESTIE EDITION </p>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- SECTION LANGKAH -->
+    <section id="langkah">
+        <div class="langkah-container">
+            <div class="langkah-header">
+                <div class="badge-langkah">3 Langkah Mudah</div>
+                <h2 class="deskripsi">3 Langkah Foto Ala Ican</h2>
+                <p>Gak perlu antre di mall. Buka browser di laptop atau HP, langsung jadi dalam 2 menit!</p>
+            </div>
+            <div class="card-container">
+                <div class="card">
+                    <div class="card-header">
+                        <span class="nomor satu">1</span>
+                        <span class="label">langkah 01</span>
+                    </div>
+                    <img src="images/Photobox3.png" alt="Langkah 1" onerror="this.onerror=null;this.src='images/Photobox1.png'">
+                    <div class="card-body">
+                        <h3>Pilih Frame &amp; Pose Idaman</h3>
+                        <p>Pilih dari template photostrip lucu: 4-cut grid 2x2, 2-cut wide duo, atau 4-strip vertikal klasik.</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <span class="nomor dua">2</span>
+                        <span class="label">langkah 02</span>
+                    </div>
+                    <img src="images/Photobox3.png" alt="Langkah 2" onerror="this.onerror=null;this.src='images/Photobox1.png'">
+                    <div class="card-body">
+                        <h3>Berekspresi di Virtual Booth</h3>
+                        <p>Gunakan filter real-time di layar dengan efek flash natural dan hitung mundur otomatis.</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <span class="nomor tiga">3</span>
+                        <span class="label">langkah 03</span>
+                    </div>
+                    <img src="images/Photobox3.png" alt="Langkah 3" onerror="this.onerror=null;this.src='images/Photobox1.png'">
+                    <div class="card-body">
+                        <h3>Hias &amp; Simpan / Cetak!</h3>
+                        <p>Tambahkan stiker menggemaskan, ganti warna frame, lalu unduh hasilnya dalam kualitas HD gratis!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>
