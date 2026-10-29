@@ -1,6 +1,4 @@
-// ==========================================
-// STATE & KONFIGURASI STUDIO PHOTOBOOTH
-// ==========================================
+
 let currentLayout = '4cut'; // '4cut', '2cut', '4strip'
 let currentTheme = 'white'; // 'white', 'pink', 'purple'
 let stickersEnabled = true;
@@ -10,6 +8,16 @@ let timerSeconds = 3;
 let isCapturing = false;
 let mediaStream = null;
 let capturedFrames = []; // Menyimpan hasil jepretan dalam bentuk Canvas agar bisa di-render ulang kapan saja
+
+// Daftar Filter Kamera
+const cameraFilters = [
+    { name: 'Normal', css: 'none' },
+    { name: 'Y2K Pink', css: 'contrast(1.08) brightness(1.06) saturate(1.35) hue-rotate(-8deg)' },
+    { name: 'Soft Glow', css: 'brightness(1.12) contrast(0.95) saturate(1.1)' },
+    { name: 'Vintage', css: 'sepia(0.45) contrast(1.05) brightness(0.98)' },
+    { name: 'B&W Mono', css: 'grayscale(1) contrast(1.15)' }
+];
+let currentFilterIndex = 0;
 
 // Elemen DOM
 const videoElement = document.getElementById('webcam');
