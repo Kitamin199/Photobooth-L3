@@ -1,12 +1,14 @@
-import ScrollVelocity from './ScrollVelocity';
+import useVisibleMotion from '../hooks/useVisibleMotion';
 
 export default function SectionMarquee({ label, reverse = false }) {
+  const ref = useVisibleMotion();
   return (
-    <div aria-hidden="true" className="py-3 text-plum">
-      <ScrollVelocity texts={[label]} velocity={reverse ? -32 : 32} separator="✦"
-        gap={18} numCopies={24} fadeEdges={reverse} fontSize="clamp(1.6rem, 3.5vw, 3.25rem)"
-        parallaxStyle={{ paddingBlock: '0.35em' }}
-        scrollerStyle={{ lineHeight: 1.35, ...(reverse && { WebkitTextStroke: '1px currentColor', WebkitTextFillColor: 'transparent' }) }} />
+    <div ref={ref} aria-hidden="true" className={`section-marquee ${reverse ? 'section-marquee-reverse' : ''}`}>
+      <div className="section-marquee-track">
+        {[0, 1].map(copy => <div className="section-marquee-group" key={copy}>
+          {[0, 1, 2, 3].map(index => <span key={index}>{label} ✦ </span>)}
+        </div>)}
+      </div>
     </div>
   );
 }

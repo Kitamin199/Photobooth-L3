@@ -1,5 +1,6 @@
 import SectionMarquee from './SectionMarquee';
 import { useEffect, useRef } from 'react';
+import { STUDIO_EXPAND_SCROLL_DISTANCE } from '../lib/studioNavigation';
 
 function smoothstep(start, end, value) {
   const t = Math.max(0, Math.min(1, (value - start) / (end - start)));
@@ -43,7 +44,7 @@ export default function ScrollExpand({ children, title, src }) {
     function measure(immediate) {
       const height = stage.current.offsetHeight || 1;
       const top = parseFloat(getComputedStyle(stage.current).top) || 0;
-      target = motion.matches ? 1 : Math.max(0, Math.min(1, (top - track.current.getBoundingClientRect().top) / (1.2 * height)));
+      target = motion.matches ? 1 : Math.max(0, Math.min(1, (top - track.current.getBoundingClientRect().top) / (STUDIO_EXPAND_SCROLL_DISTANCE * height)));
       if (immediate || motion.matches) {
         cancelAnimationFrame(raf);
         raf = 0;
@@ -57,13 +58,16 @@ export default function ScrollExpand({ children, title, src }) {
 
     const resize = () => measure(true);
     const scroll = () => measure(false);
+    const snapAfterNavigation = () => measure(true);
     resize();
     window.addEventListener('scroll', scroll, { passive: true });
+    window.addEventListener('studio-navigation-jump', snapAfterNavigation);
     window.addEventListener('resize', resize);
     motion.addEventListener?.('change', resize);
     return () => {
       cancelAnimationFrame(raf);
       window.removeEventListener('scroll', scroll);
+      window.removeEventListener('studio-navigation-jump', snapAfterNavigation);
       window.removeEventListener('resize', resize);
       motion.removeEventListener?.('change', resize);
     };

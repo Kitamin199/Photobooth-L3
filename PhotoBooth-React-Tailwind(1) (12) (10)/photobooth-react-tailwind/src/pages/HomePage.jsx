@@ -1,3 +1,6 @@
+import BrandLogo from '../components/BrandLogo';
+import CommentsSection from '../components/CommentsSection';
+import ChromaGrid from '../components/ChromaGrid';
 import AnimatedContent from '../components/AnimatedContent';
 import ScrollExpand from '../components/ScrollExpand';
 import SmoothScroll from '../components/SmoothScroll';
@@ -35,6 +38,7 @@ export default function HomePage() {
     const hero = heroRef.current;
     const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
     let frame = 0;
+    let lastProgress = -1;
 
     function update() {
       frame = 0;
@@ -46,6 +50,8 @@ export default function HomePage() {
       const stickyTop = parseFloat(getComputedStyle(hero).top) || 0;
       const distance = Math.max(1, window.innerHeight - stickyTop);
       const progress = Math.min(1, Math.max(0, (window.innerHeight - studio.getBoundingClientRect().top) / distance));
+      if (progress === lastProgress) return;
+      lastProgress = progress;
       const eased = progress * progress * (3 - 2 * progress);
       hero.style.setProperty('--hero-shift', `${-Math.min(80, window.innerHeight * 0.1) * eased}px`);
       hero.style.setProperty('--hero-blur', `${8 * eased}px`);
@@ -84,11 +90,18 @@ export default function HomePage() {
           <p className="mt-2 mb-6 text-sm text-plum">Pilih layout dan coba kamera langsung di sini.</p>
           <StudioDemo />
           <AnimatedContent><h3 className="mt-8 font-display text-2xl font-bold">Untuk siapa PhotoBooth?</h3></AnimatedContent>
-          <AnimatedContent stagger={0.08} className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-            {occasions.map(([title, photo, alt, body], i) => <article key={title} className="border-t-2 border-plum/30 pt-4">
-              <img src={`${import.meta.env.BASE_URL}images/audience/${photo}.webp`} alt={alt} width="552" height="552" loading="lazy" className="mb-4 aspect-square w-full rounded-xl object-cover" />
-              <small className="font-mono text-plum">0{i + 1}</small><h4 className="my-2 font-display text-xl">{title}</h4><p className="text-sm leading-relaxed">{body}</p>
-            </article>)}
+          <AnimatedContent className="mt-6">
+            <ChromaGrid
+              className="audience-chroma"
+              items={occasions.map(([title, photo, alt, subtitle], index) => ({
+                title, subtitle, alt,
+                image: `${import.meta.env.BASE_URL}images/audience/${photo}.webp`,
+                accent: ['#ff91bd', '#e6bb42', '#b29ae8', '#ff91bd'][index],
+              }))}
+              columns={4} gap={20} minCardWidth={200}
+              aspectRatio="1 / 1" theme="light" cardRadius={20}
+              radius={260} dim={0.06} damping={0.45}
+            />
           </AnimatedContent>
         </section>
       </div>
@@ -97,11 +110,8 @@ export default function HomePage() {
         <p className="eyebrow">Studio lengkap</p><h2 className="section-title">Atur sesi sesuai gayamu.</h2>
         <p className="my-4 max-w-xl">Buka studio untuk mengganti warna frame, mencoba filter Y2K dan mengatur timer 1, 3, atau 5 detik.</p><a className="action" href="./booth.html">Buka studio lengkap</a>
       </ScrollExpand>
-      <section id="harga" className="landing-section flex flex-wrap items-center justify-between gap-5 border-y border-line py-8">
-        <div><p className="eyebrow">Harga sesi</p><h2 className="section-title">Foto gratis di browser.</h2></div>
-        <p className="max-w-sm text-sm leading-relaxed">Pilih layout, ambil foto, dan unduh hasil PNG langsung ke perangkatmu.</p>
-      </section>
-      <footer className="mx-auto flex w-[92%] max-w-5xl justify-between py-8 text-sm"><b>PhotoBooth Studio</b><a href="#home" className="underline">Kembali ke atas</a></footer>
+      <CommentsSection />
+      <footer className="mx-auto flex w-[92%] max-w-5xl justify-between py-8 text-sm"><a href="#home" aria-label="CekRek!, kembali ke atas"><BrandLogo className="h-16 w-auto" /></a><a href="#home" className="underline">Kembali ke atas</a></footer>
     </main>
   );
 }

@@ -2,6 +2,7 @@
 
 import { useEffect } from "react"
 
+// Keep a weighted glide while responding quickly to each wheel gesture.
 const DOWN_DAMPING = 230
 const UP_DAMPING = 190
 const WHEEL_MULTIPLIER = 0.82
@@ -30,6 +31,7 @@ export default function SmoothScroll() {
     }
 
     const tick = (now: number) => {
+      // Keyboard, anchor links, scrollbar dragging, or external scrolling wins.
       if (Math.abs(window.scrollY - lastWritten) > 2) {
         stop()
         return
@@ -38,6 +40,7 @@ export default function SmoothScroll() {
       lastTime = now
       target = clamp(target)
       const damping = direction > 0 ? DOWN_DAMPING : UP_DAMPING
+      // Keep subpixel progress internally even when the browser rounds scrollY.
       position = clamp(position + (target - position) * (1 - Math.exp(-elapsed / damping)))
       window.scrollTo({ top: position, behavior: "instant" })
       lastWritten = window.scrollY
@@ -54,6 +57,7 @@ export default function SmoothScroll() {
           event.ctrlKey || event.metaKey || event.shiftKey ||
           Math.abs(event.deltaX) > Math.abs(event.deltaY) || event.deltaY === 0) return
 
+      // Keep dialogs, form fields and nested scrolling regions native.
       if (getComputedStyle(document.body).overflowY === "hidden" ||
           getComputedStyle(root).overflowY === "hidden") {
         stop()
@@ -79,6 +83,7 @@ export default function SmoothScroll() {
       }
       direction = nextDirection
       const unit = event.deltaMode === 1 ? 16 : event.deltaMode === 2 ? window.innerHeight : 1
+      // Bound the queued distance so repeated wheel input never leaves a long tail.
       const delta = Math.max(-window.innerHeight, Math.min(window.innerHeight, event.deltaY * unit))
       const queueLimit = window.innerHeight * 0.8
       target = clamp(Math.max(window.scrollY - queueLimit,
